@@ -38,6 +38,14 @@ public class PrincipalComBusca {
             System.out.println(meutitulo);
 
 
+//        } catch (NumberFormatException e) {
+//            System.out.println("Erro:");
+//            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Erro:");
+            System.out.println(e.getMessage());
         }
+
+        System.out.println("Finalizado.");
     }
 }

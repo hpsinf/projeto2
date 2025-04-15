@@ -1,16 +1,15 @@
 package br.com.alura.screenmatch.modelos;
 
+import br.com.alura.screenmatch.excecao.ExceptionAnoLancamento;
 import com.google.gson.annotations.SerializedName;
 
 public class Titulo implements Comparable<Titulo> {
-    @SerializedName("Title")
     private String nome;
-    @SerializedName("Year")
     private int anoDeLancamento;
     private boolean incluidoNoPlano;
     private double somaDasAvaliacoes;
     private int totalDeAvaliacoes;
-    private int duracaoEmMinutos;
+    private String duracaoEmMinutos;
 
 
     public Titulo (String nome, int anoDeLancamento){
@@ -20,8 +19,12 @@ public class Titulo implements Comparable<Titulo> {
 
     public Titulo(TitulosOmbd titulosOmbd) {
         this.nome = titulosOmbd.title();
+
+        if (titulosOmbd.year().length() > 4){
+            throw new ExceptionAnoLancamento("Erro de conversão de Ano, Ano inválido com mais de 4 caracteres.");
+        }
         this.anoDeLancamento = Integer.valueOf(titulosOmbd.year().substring(0,4).trim());
-        this.duracaoEmMinutos = Integer.valueOf(titulosOmbd.runtime().substring(0,2).trim());
+        this.duracaoEmMinutos = titulosOmbd.runtime();
     }
 
     public String getNome() {
@@ -36,7 +39,7 @@ public class Titulo implements Comparable<Titulo> {
         return incluidoNoPlano;
     }
 
-    public int getDuracaoEmMinutos() {
+    public String getDuracaoEmMinutos() {
         return duracaoEmMinutos;
     }
 
@@ -56,7 +59,7 @@ public class Titulo implements Comparable<Titulo> {
         this.incluidoNoPlano = incluidoNoPlano;
     }
 
-    public void setDuracaoEmMinutos(int duracaoEmMinutos) {
+    public void setDuracaoEmMinutos(String duracaoEmMinutos) {
         this.duracaoEmMinutos = duracaoEmMinutos;
     }
 

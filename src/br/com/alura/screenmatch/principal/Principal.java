@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Principal {
     public static void main(String[] args) {
         Filme meuFilme = new Filme("O poderoso chefão", 1970);                
-        meuFilme.setDuracaoEmMinutos(180);
+        meuFilme.setDuracaoEmMinutos("180");
         System.out.println("Duração do filme: " + meuFilme.getDuracaoEmMinutos());
 
         meuFilme.exibeFichaTecnica();
@@ -31,7 +31,7 @@ public class Principal {
 
         Filme outroFilme = new Filme("Avatar", 2023);        
         
-        outroFilme.setDuracaoEmMinutos(200);
+        outroFilme.setDuracaoEmMinutos("200");
 
 
         //adicionar mais um filme
