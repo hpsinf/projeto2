@@ -31,3 +31,4 @@ bin/
 ### Mac OS ###
 .DS_Store
 /dependencias/gson-2.12.1.jar
+/titulos.json
